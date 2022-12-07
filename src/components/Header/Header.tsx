@@ -1,0 +1,13 @@
+import React from 'react';
+import hhh from './Header.module.css'
+
+const Header = () => {
+    return(
+    <header className={hhh.header}>
+        <img
+            src='https://yandex-images.clstorage.net/AM52yO155/51eaa8f71b/1zHy1DJ39CKyP9QG6DRXu7tclJGTw-qGumeqsHU2ojZfX4HpK7kGadnigemmvm8Dj_qWes8yYEx9Y9US_WOrD5Jkvpgpabsosz_XC-EvXrywVJuZl9fthOIwseIgIqsyEkyJ7RfVJhr-iqvY2MAXfcOtwSuZfXoHbQvsH4gf63fiB-_NOF6SAIwJtjPvE0WWtBOTs7WP6d-DWcDROBPeBCRLx4092CM05LyL_8bdBFfAtOAjkkIfJn0h_1uHAv977iXnwRhDqCiXDrYawDZ1lY0hrLmLo8T7sW3kyjw08RYbSdGJINgkEvS4kMPC9ztfzZbcLZdrFjx5J-tnjjzoU_ACwdYwS5kZhDWAOdAyeIy0Fq-_pbjm9ZFw0uICHNshIUbmiyDZKRfNl6H41OA9ecmrzCi6SC4xSTbBWKsm9XfvE-H-BE-LGaYOtAfECWmNhRyjobG4zv6ZZ9rwKz3JEiJd_4sv4CYR06KR3vzVK3XPpcEJlXQyMHEFw0e_OvVD4gDW-yFrnSGTA7090yhFi6U2sbCdnOHMuXbH2ysB8yM_ceSrEOgBOOmgosXg0jJ1-b_LKZZvHxxMEthVuQX0XMcj_u06UIg_uQCUKOoyW7CGP6ymtqvF9LFF9c0VJtU6C2zdmhzvFwzdpIjg1s4OfemO_iePVxEyQA78S68842niFOznE2m2BZkJqhv_N1KQlCeTgKyN8Ne-aPbEPzjGES5w8qoM6CE9zpig7sfMHFzZvN4fvWE3AE41402eMeVDwBro5DFXiyeEP7UW5xRGrIIRvKKxqcbvuXnW8wYbwBUoVdiSB8sAHO6gqMjo1xti3pX7AY1jFQBwJ-lQjQb1fPUb4d0obJg8ji-uEN8fcpWEGL-Tpb7C3KJ00OcmHdowJVrxuB7YEjLOupDwyOkRUsmgxQqEShYRbBHyR6MB0UvWIufaOkG8Ab4euzrDH2aagjesm62v892wSdnnIBw'/>
+    </header>
+)
+}
+
+export default Header
