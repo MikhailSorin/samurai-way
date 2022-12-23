@@ -1,18 +1,17 @@
 import React from 'react';
-import MyPosts from "./myPosts/myPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {PostType} from "../../index";
+import MyPosts from "./myPosts/MyPosts";
 
-const Profile = () => {
+type ProfilePropsType={
+   posts:Array<PostType>
+}
+
+const Profile = (props:ProfilePropsType) => {
     return (
         <div>
-            <div>
-                <img src="https://cdn.stocksnap.io/img-thumbs/280h/Z28P4HBP06.jpg"/>
-            </div>
-            <div>
-                ava+dicription
-            </div>
-            <MyPosts/>
-
-
+            <ProfileInfo/>
+            <MyPosts posts={props.posts}/>
         </div>
 
     )
