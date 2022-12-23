@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {state}from'./redux/state'
+import App from "./App";
 
 export type PostType = {
     id: string,
@@ -17,29 +18,11 @@ export type messageType = {
     message: string
 }
 
-let posts = [
-    {id: '1', message: 'first message', likeCount: 5},
-    {id: '2', message: 'second message', likeCount: 10},
-    {id: '3', message: 'therd message', likeCount: 10},
-    {id: '4', message: 'yo message', likeCount: 10},
-    {id: '5', message: 'hru message', likeCount: 10},
-]
-let dialogs = [
-    {id: '1', name: 'Dima'},
-    {id: '2', name: 'Fima'},
-    {id: '3', name: 'Tima'},
-    {id: '4', name: 'Kima'}
-]
-let messages = [
-    {id: '1', message: 'Hi'},
-    {id: '2', message: 'By!'},
-    {id: '3', message: 'Why?'},
-    {id: '4', message: 'Hwo?'}
-]
 
 
 
 ReactDOM.render(
-    <App posts={posts} dialogs={dialogs} messages={messages}/>,
+   /* <App posts={state.posts} dialogs={state.dialogs} messages={state.messages}/>,*/
+    <App state={state}/>,
     document.getElementById('root')
 );
