@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {state}from'./redux/state'
-import App from "./App";
+import {state}  from'./redux/state'
+import App, {AppPropsType} from "./App";
+import {adPost} from "./redux/state";
+import {renderEntireTree} from "./render";
 
 export type PostType = {
     id: string,
@@ -18,11 +20,4 @@ export type messageType = {
     message: string
 }
 
-
-
-
-ReactDOM.render(
-   /* <App posts={state.posts} dialogs={state.dialogs} messages={state.messages}/>,*/
-    <App state={state}/>,
-    document.getElementById('root')
-);
+renderEntireTree(state)

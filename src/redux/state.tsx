@@ -1,4 +1,10 @@
-export let state={
+import {useState} from "react";
+import {AppPropsType} from "../App";
+import {renderEntireTree} from "../render";
+
+
+
+export let state:AppPropsType={
     profilePage:{
         posts : [
             {id: '1', message: 'first message', likeCount: 5},
@@ -22,4 +28,14 @@ export let state={
             {id: '4', message: 'Hwo?'}
         ]
     }
+}
+/*const [posts,setPosts]=useState()*/
+
+export const adPost=(postMessage:string)=>{
+    let newPost={
+        id: '5', message: postMessage, likeCount: 0
+    }
+
+    state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
 }

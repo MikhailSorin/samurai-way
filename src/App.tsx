@@ -7,7 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom';
 import {memberType, messageType, PostType} from "./index";
 
-type AppPropsType = {
+export type AppPropsType = {
     profilePage: {
         posts: Array<PostType>
     },
@@ -20,6 +20,7 @@ type AppPropsType = {
 }
 export type state = {
     state: AppPropsType
+    adPost: (newMessage: string) => void
 }
 
 function App(props: state) {
@@ -34,7 +35,10 @@ function App(props: state) {
                                state={props.state.messagesPage}/>}/>
                     <Route path='/profile'
                            render={() => <Profile
-                               state={props.state.profilePage}/>}/>
+                               state={props.state.profilePage}
+                               adPost={props.adPost}
+                           />}
+                    />
                 </div>
             </div>
         </BrowserRouter>

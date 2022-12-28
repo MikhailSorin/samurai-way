@@ -8,14 +8,14 @@ type ProfilePropsType={
 }
 type state={
 state: ProfilePropsType
-
+    adPost:(newMessage:string)=>void
 }
 
 const Profile = (props:state) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts}/>
+            <MyPosts posts={props.state.posts} adPost={props.adPost}/>
         </div>
 
     )
