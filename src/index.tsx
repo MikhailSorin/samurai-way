@@ -1,10 +1,22 @@
 import React from 'react';
+import './index.css';
+import {store} from './redux/state'
 import ReactDOM from 'react-dom';
 import './index.css';
-import {state}  from'./redux/state'
-import App, {AppPropsType} from "./App";
-import {adPost} from "./redux/state";
-import {renderEntireTree} from "./render";
+import App from "./App";
+
+
+
+let renderEntireTree=()=>{
+    ReactDOM.render(
+       /* <App state={state} adPost={adPost} updateNewPostText={updateNewPostText}/>,*/
+        <App store={store}/>,
+        document.getElementById('root')
+    );
+}
+renderEntireTree()
+store.subscribe(renderEntireTree)
+
 
 export type PostType = {
     id: string,
@@ -19,5 +31,3 @@ export type messageType = {
     id: string,
     message: string
 }
-
-renderEntireTree(state)

@@ -3,19 +3,27 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {PostType} from "../../index";
 import MyPosts from "./myPosts/MyPosts";
 
-type ProfilePropsType={
-   posts:Array<PostType>
+
+type ProfilePropsType = {
+    posts: Array<PostType>
+    newPostText:string
 }
-type state={
-state: ProfilePropsType
-    adPost:(newMessage:string)=>void
+type state = {
+    profilePage: ProfilePropsType
+    adPost: () => void
+    updateNewPostText:(newText:string)=>void
 }
 
-const Profile = (props:state) => {
+const Profile = (props: state) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} adPost={props.adPost}/>
+            <MyPosts
+                posts={props.profilePage.posts}
+                adPost={props.adPost}
+                newPostText={props.profilePage.newPostText}
+                updateNewPostText={props.updateNewPostText}
+            />
         </div>
 
     )
