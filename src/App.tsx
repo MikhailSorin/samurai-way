@@ -41,8 +41,9 @@ function App(props: state) {
                         path='/profile'
                         render={() => <Profile
                             profilePage={state1.profilePage}
-                            adPost={props.store.addPost.bind(props.store)}
-                            updateNewPostText={props.store.changeNewText.bind(props.store)}
+                            //adPost={props.store.addPost.bind(props.store)}
+                            //updateNewPostText={props.store.changeNewText.bind(props.store)}
+                            dispatch={props.store.dispatch.bind(props.store)}
                         />}
                     />
                 </div>
