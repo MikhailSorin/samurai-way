@@ -6,7 +6,7 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom';
 import {memberType, messageType, PostType} from "./index";
-import {StoreType} from "./redux/state";
+import {ActionType, StoreType} from "./redux/store";
 
 
 export type RootPropsType = {
@@ -14,15 +14,17 @@ export type RootPropsType = {
         posts: Array<PostType>,
         newPostText: string
     },
-    messagesPage: {
+    dialogsPage: {
         dialogs: Array<memberType>
         messages: Array<messageType>
+        newMessageBody:string
     },
 
 
 }
 export type state = {
-    store: StoreType
+    store: any//StoreType!!!!!!!!!!!!!!!!!!!!!!!
+    dispatch:(action: ActionType)=>void
 }
 
 function App(props: state) {
@@ -36,14 +38,15 @@ function App(props: state) {
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
                            render={() => <Dialogs
-                               state={state1.messagesPage}/>}/>
+                               newMessageBody={state1.dialogsPage.newMessageBody}
+                               state={state1.dialogsPage}
+                               dispatch={props.dispatch.bind(props.store)}
+                           />}/>
                     <Route
                         path='/profile'
                         render={() => <Profile
                             profilePage={state1.profilePage}
-                            //adPost={props.store.addPost.bind(props.store)}
-                            //updateNewPostText={props.store.changeNewText.bind(props.store)}
-                            dispatch={props.store.dispatch.bind(props.store)}
+                            dispatch={props.dispatch.bind(props.store)}
                         />}
                     />
                 </div>

@@ -1,21 +1,30 @@
 import React from 'react';
 import './index.css';
-import {store} from './redux/state'
+import {store} from './redux/redux-store'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from "./App";
 
 
 
-let renderEntireTree=()=>{
+let renderEntireTree=(state:any)=>{
+
     ReactDOM.render(
        /* <App state={state} adPost={adPost} updateNewPostText={updateNewPostText}/>,*/
-        <App store={store}/>,
+        <App store={store} dispatch={store.dispatch.bind(store)}/>,
+
         document.getElementById('root')
     );
+
 }
-renderEntireTree()
+renderEntireTree(store.getState())
+/*
 store.subscribe(renderEntireTree)
+*/
+store.subscribe(()=>{
+    let state=store.getState()
+
+    renderEntireTree(state)})
 
 
 export type PostType = {

@@ -1,4 +1,12 @@
 import {RootPropsType} from "../App";
+import {ADD_POST, addPostAC, CHANGE_NEW_TEXT, changeNewTextAC, profileReducer} from "./profile-reducer";
+import {
+    dialogsReducer,
+    SEND_MESSAGE,
+    sendMessageAC,
+    UPDATE_NEW_MESSAGE_BODY,
+    updateNewMessageBodyAC
+} from "./dialogs-reducer";
 
 let renderEntireTree = (s: RootPropsType) => {
 }
@@ -15,21 +23,13 @@ export type StoreType = {
 
 }
 
-export type ActionType = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+export type ActionType =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof changeNewTextAC>
+    | ReturnType<typeof updateNewMessageBodyAC>
+    | ReturnType<typeof sendMessageAC>
 
-export const addPostAC = () => {
-    return ({
-        type: "ADD-POST"
-    })as const
-}
-export const changeNewTextAC = (newText: string) => {
-    return ({
-        type: "CHANGE-NEW-TEXT",
-        newText: newText
-    })as const
-}
-
-export const store: StoreType = {
+/*export const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -41,7 +41,7 @@ export const store: StoreType = {
             ],
             newPostText: 'IT-Kamasutra'
         },
-        messagesPage: {
+        dialogsPage: {
             dialogs: [
                 {id: '1', name: 'Dima'},
                 {id: '2', name: 'Fima'},
@@ -53,28 +53,15 @@ export const store: StoreType = {
                 {id: '2', message: 'By!'},
                 {id: '3', message: 'Why?'},
                 {id: '4', message: 'Hwo?'}
-            ]
+            ],
+            newMessageBody: ""
         }
     },
 
 
-    /*_changeNewText(newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._onChange()
-    },*/
-    /* _addPost() {
-         let newPost = {
-             id: '5',
-             message: this._state.profilePage.newPostText,
-             likeCount: 0
-         }
-         this._state.profilePage.posts.push(newPost)
-         //  this._state.profilePage.newPostText = ''
-         this._onChange()
-     },*/
-
     _onChange() {
         console.log("state changed")
+
     },
     subscribe(callBack) {
         this._onChange = callBack
@@ -84,25 +71,8 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: '5',
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            }
-            this._state.profilePage.posts.push(newPost)
-            //  this._state.profilePage.newPostText = ''
-            this._onChange()
-        } else if (action.type === "CHANGE-NEW-TEXT") {
-            console.log("CHANGE-NEW-TEXT")
-            //debugger
-            this._state.profilePage.newPostText = action.newText
-
-            this._onChange()
-        }
-
-
+        this._state.profilePage=profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage=dialogsReducer(this._state.dialogsPage, action)
+        this._onChange()
     }
-
-
-}
+}*/

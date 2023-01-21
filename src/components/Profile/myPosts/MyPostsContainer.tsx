@@ -13,7 +13,7 @@ type myPostsPropsType = {
     //updateNewPostText: (newText: string) => void
     dispatch: (action: ActionType) => void
 }
-const MyPosts = (props: myPostsPropsType) => {
+const MyPostsContainer = (props: myPostsPropsType) => {
     console.log('rerender MyPosts')
     let postsElemens = props.posts.map(d => <Post message={d.message} likeCount={d.likeCount}/>)
     /*let newPostElement = React.createRef<HTMLTextAreaElement>()*/
@@ -47,4 +47,4 @@ const MyPosts = (props: myPostsPropsType) => {
     </div>
 }
 
-export default MyPosts
+export default MyPostsContainer
