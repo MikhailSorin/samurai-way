@@ -7,6 +7,5 @@ import {dialogsReducer} from "./dialogs-reducer";
     dialogsPage:dialogsReducer
 })
 
-
-
 export let store = createStore(reducers)
+

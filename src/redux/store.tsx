@@ -1,17 +1,8 @@
 import {RootPropsType} from "../App";
-import {ADD_POST, addPostAC, CHANGE_NEW_TEXT, changeNewTextAC, profileReducer} from "./profile-reducer";
-import {
-    dialogsReducer,
-    SEND_MESSAGE,
-    sendMessageAC,
-    UPDATE_NEW_MESSAGE_BODY,
-    updateNewMessageBodyAC
-} from "./dialogs-reducer";
+import {addPostAC, changeNewTextAC} from "./profile-reducer";
+import {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
 
 let renderEntireTree = (s: RootPropsType) => {
-}
-export const subscribe = (observer: () => void) => {
-    renderEntireTree = observer
 }
 
 export type StoreType = {

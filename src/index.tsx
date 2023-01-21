@@ -10,17 +10,12 @@ import App from "./App";
 let renderEntireTree=(state:any)=>{
 
     ReactDOM.render(
-       /* <App state={state} adPost={adPost} updateNewPostText={updateNewPostText}/>,*/
         <App store={store} dispatch={store.dispatch.bind(store)}/>,
-
         document.getElementById('root')
     );
-
 }
 renderEntireTree(store.getState())
-/*
-store.subscribe(renderEntireTree)
-*/
+
 store.subscribe(()=>{
     let state=store.getState()
 

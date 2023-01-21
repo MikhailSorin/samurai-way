@@ -7,6 +7,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom';
 import {memberType, messageType, PostType} from "./index";
 import {ActionType, StoreType} from "./redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 export type RootPropsType = {
@@ -19,17 +20,13 @@ export type RootPropsType = {
         messages: Array<messageType>
         newMessageBody:string
     },
-
-
 }
 export type state = {
-    store: any//StoreType!!!!!!!!!!!!!!!!!!!!!!!
+    store: any
     dispatch:(action: ActionType)=>void
 }
 
 function App(props: state) {
-    const state1: RootPropsType = props.store.getState()
-
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -37,17 +34,10 @@ function App(props: state) {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <Dialogs
-                               newMessageBody={state1.dialogsPage.newMessageBody}
-                               state={state1.dialogsPage}
-                               dispatch={props.dispatch.bind(props.store)}
-                           />}/>
+                           render={() => <DialogsContainer store={props.store}/>}/>
                     <Route
                         path='/profile'
-                        render={() => <Profile
-                            profilePage={state1.profilePage}
-                            dispatch={props.dispatch.bind(props.store)}
-                        />}
+                        render={() => <Profile store={props.store}/>}
                     />
                 </div>
             </div>

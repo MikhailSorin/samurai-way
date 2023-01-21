@@ -2,20 +2,18 @@ import React, {ChangeEvent} from "react";
 import s from './Dialog.module.css'
 import DialogItem, {DialogItemPropsType} from "./DialogItem/DialogItem";
 import Message, {MessagePropsType} from "./Message/Message";
-import {ActionType} from "../../redux/store";
-import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
     dialogs: Array<DialogItemPropsType>
     messages: Array<MessagePropsType>
-
 }
+
 type PropsType = {
     state: DialogsPropsType
     newMessageBody:string
-    dispatch: (action: ActionType) => void
+    changeMessage: (text:string) => void
+    sendMessage:()=>void
 }
-
 
 const Dialogs = (props: PropsType) => {
 console.log('rerender Dialogs')
@@ -24,16 +22,14 @@ console.log('rerender Dialogs')
                                                                                      id={dialog.id = '1'}/>)
     let messagesElements = props.state.messages.map(message => <Message message={message.message}
                                                                                      id={message.id}/>)
-//    let newPostElement = React.createRef<HTMLTextAreaElement>()
- /*   let newMessageBody = props.state.messagesPage.newMessageBody
-    let newBody = props.state.messagesPage.newMessageBody*/
+
     const onSendMessageClick = () => {
-        props.dispatch(sendMessageAC())
+        props.sendMessage()
     }
 
     const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value
-        props.dispatch(updateNewMessageBodyAC(body))
+        props.changeMessage(body)
     }
 
 
