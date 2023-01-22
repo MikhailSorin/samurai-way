@@ -4,14 +4,21 @@ import {store} from './redux/redux-store'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from "./App";
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from './StoreContext'
 
 
 
 let renderEntireTree=(state:any)=>{
 
     ReactDOM.render(
-        <App store={store}/>,
-        document.getElementById('root')
+        <BrowserRouter>
+          <Provider store={store}>
+        <App/>
+          </Provider>,
+        </BrowserRouter>,
+
+            document.getElementById('root')
     );
 }
 renderEntireTree(store.getState())

@@ -3,12 +3,9 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import {memberType, messageType, PostType} from "./index";
-import {ActionType, StoreType} from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-
 
 export type RootPropsType = {
     profilePage: {
@@ -21,27 +18,23 @@ export type RootPropsType = {
         newMessageBody:string
     },
 }
-export type state = {
-    store: any
-}
 
-function App(props: state) {
-   console.log(props.store)
-    return (
-        <BrowserRouter>
+
+function App() {
+      return (
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={() => <DialogsContainer store={props.store}/>}/>
+                           render={() => <DialogsContainer/>}/>
                     <Route
                         path='/profile'
-                        render={() => <Profile store={props.store}/>}
+                        render={() => <Profile/>}
                     />
                 </div>
             </div>
-        </BrowserRouter>
+
     )
 }
 
