@@ -23,10 +23,10 @@ export type RootPropsType = {
 }
 export type state = {
     store: any
-    dispatch:(action: ActionType)=>void
 }
 
 function App(props: state) {
+   console.log(props.store)
     return (
         <BrowserRouter>
             <div className='app-wrapper'>

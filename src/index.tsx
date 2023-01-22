@@ -10,7 +10,7 @@ import App from "./App";
 let renderEntireTree=(state:any)=>{
 
     ReactDOM.render(
-        <App store={store} dispatch={store.dispatch.bind(store)}/>,
+        <App store={store}/>,
         document.getElementById('root')
     );
 }
