@@ -5,11 +5,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from './StoreContext'
+import {Provider} from "react-redux";
 
 
 
-let renderEntireTree=(state:any)=>{
+
+/*let renderEntireTree=(state:any)=>{*/
 
     ReactDOM.render(
         <BrowserRouter>
@@ -20,13 +21,8 @@ let renderEntireTree=(state:any)=>{
 
             document.getElementById('root')
     );
-}
-renderEntireTree(store.getState())
+/*}*/
 
-store.subscribe(()=>{
-    let state=store.getState()
-
-    renderEntireTree(state)})
 
 
 export type PostType = {
@@ -34,11 +30,5 @@ export type PostType = {
     message: string,
     likeCount: number
 }
-export type memberType = {
-    id: string,
-    name: string
-}
-export type messageType = {
-    id: string,
-    message: string
-}
+
+

@@ -4,10 +4,9 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { Route} from 'react-router-dom';
-import {memberType, messageType, PostType} from "./index";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-export type RootPropsType = {
+/*export type RootPropsType = {
     profilePage: {
         posts: Array<PostType>,
         newPostText: string
@@ -17,7 +16,7 @@ export type RootPropsType = {
         messages: Array<messageType>
         newMessageBody:string
     },
-}
+}*/
 
 
 function App() {

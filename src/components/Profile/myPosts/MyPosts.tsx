@@ -5,8 +5,8 @@ import {PostType} from "../../../index";
 
 type myPostsPropsType = {
     posts: Array<PostType>
-    adPost: () => void
     newPostText: string
+    addPost: () => void
     updateNewPostText: (newText: string) => void
 }
 const MyPosts = (props: myPostsPropsType) => {
@@ -14,7 +14,7 @@ const MyPosts = (props: myPostsPropsType) => {
     let postsElements = props.posts.map(d => <Post message={d.message} likeCount={d.likeCount}/>)
 
     const addPost = () => {
-         props.adPost()
+         props.addPost()
          }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
