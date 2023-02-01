@@ -6,6 +6,18 @@ export const UNFOLLOW = "UNFOLLOW"
 export const SET_USERS = 'SET_USERS'
 
 export type UserType = {
+    "name": string
+    "id": string
+    "uniqueUrlName":string
+    "photos": {
+        "small": string
+        "large": string
+    },
+    "status": string
+    "followed": boolean
+}
+
+/*export type UserType = {
     id: string,
     photoUrl: string,
     fullName: string,
@@ -15,7 +27,7 @@ export type UserType = {
         city: string,
         country: string
     }
-}
+}*/
 
 let initialState: initialStateType = {
     users: []

@@ -2,60 +2,15 @@ import React from "react";
 import {UserType} from "../../redux/users-reducer";
 import s from './users.module.css'
 import {UsersPropsType} from "./UsersContainer";
+import axios from "axios";
+import userPhoto from '../../assets/images/vini.png'
 
 
 export const Users = (props: UsersPropsType) => {
-    if(props.usersPage.users.length===0)props.setUsers([
-        {
-            id: '1',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Dmitriy',
-            followed: false,
-            status: "I'm boss",
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: '2',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Michael',
-            followed: true,
-            status: "I'm boss",
-            location: {city: 'St Petersburg', country: 'Russia'}
-        },
-        {
-            id: '3',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Igor',
-            followed: false,
-            status: "I'm boss",
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: '4',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Ivan',
-            followed: true,
-            status: "I'm boss",
-            location: {city: 'Porto', country: 'Portugal'}
-        },
-        {
-            id: '5',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Maya',
-            followed: false,
-            status: "I'm boss",
-            location: {city: 'St Petersburg', country: 'Russia'}
-        },
-        {
-            id: '6',
-            photoUrl: 'https://fsd.multiurok.ru/html/2021/11/01/s_617f4ebb30e29/phpFoOsNh_Skazka-v-teatre_html_13c580d83d659783.jpg',
-            fullName: 'Liya',
-            followed: true,
-            status: "I'm boss",
-            location: {city: 'St Petersburg', country: 'Russia'}
-        },
+    if(props.usersPage.users.length===0)
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response=>{
 
-    ])
+            props.setUsers(response.data.items)})
 
     return <div>
         {
@@ -63,7 +18,7 @@ export const Users = (props: UsersPropsType) => {
             props.usersPage.users.map(u => <div key={u.id}>
       <span>
           <div>
-              <img src={u.photoUrl} className={s.photo}/>
+              <img src={u.photos.small!=null?u.photos.small:userPhoto} className={s.photo}/>
           </div>
           <div>
               {u.followed?
@@ -73,12 +28,12 @@ export const Users = (props: UsersPropsType) => {
       </span>
                 <span>
          <span>
-             <div>{u.fullName}</div>
+             <div>{u.name}</div>
              <div>{u.status}</div>
          </span>
          <span>
-             <div>{u.location.country}</div>
-             <div>{u.location.city}</div>
+             <div>{'u.location.country'}</div>
+             <div>{'u.location.city'}</div>
          </span>
       </span>
 
