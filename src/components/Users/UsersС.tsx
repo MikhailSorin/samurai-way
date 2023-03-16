@@ -6,19 +6,48 @@ import axios from "axios";
 import userPhoto from '../../assets/images/vini.png'
 
 class UsersC extends React.Component<UsersPropsType, UserStateType> {
-    constructor(props:UsersPropsType) {
+    constructor(props: UsersPropsType) {
         super(props);
 
     }
-componentDidMount() {
-    if (this.props.usersPage.users.length === 0)
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+
+    componentDidMount() {
+        if (this.props.usersPage.users.length === 0)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+
+    onPageChanged=(pageNumber:number)=>{
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount)
         })
-}
+    }
 
     render() {
-        return  <div>
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+        console.log('pagesCount'+pagesCount)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+        return <div>
+            <div>
+                {pages.map(el=> {
+                     return   <span
+                         className={this.props.currentPage === el ? s.selectPage : ''}
+                         onClick={(e)=> {
+                             this.onPageChanged(el)
+                         }}
+
+                     >{el}</span>
+                    }
+                )}
+
+            </div>
             {/*<button onClick={this.getUsers}>Get Users</button>*/}
             {
                 this.props.usersPage.users.map(u => <div key={u.id}>
@@ -56,4 +85,5 @@ componentDidMount() {
     }
 
 }
+
 export default UsersC
